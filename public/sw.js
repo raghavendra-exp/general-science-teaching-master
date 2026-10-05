@@ -1,17 +1,6 @@
-const CACHE_NAME = 'gst-master-v1';
-const ASSETS_TO_CACHE = [
-  './',
-  './index.html',
-  './favicon.svg',
-  './manifest.json'
-];
+const CACHE_NAME = 'gst-master-v2';
 
 self.addEventListener('install', (event) => {
-  event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(ASSETS_TO_CACHE);
-    })
-  );
   self.skipWaiting();
 });
 
@@ -21,25 +10,33 @@ self.addEventListener('activate', (event) => {
       return Promise.all(
         cacheNames.map((cache) => {
           if (cache !== CACHE_NAME) {
+            console.log('Purging old ServiceWorker cache:', cache);
             return caches.delete(cache);
           }
         })
       );
-    })
+    }).then(() => self.clients.claim())
   );
-  self.clients.claim();
 });
 
+// Network-First strategy: always fetch live updates; only fall back to cache when offline
 self.addEventListener('fetch', (event) => {
   if (event.request.method !== 'GET') return;
+  if (!event.request.url.startsWith('http')) return;
+
   event.respondWith(
-    caches.match(event.request).then((cachedResponse) => {
-      if (cachedResponse) {
-        return cachedResponse;
-      }
-      return fetch(event.request).catch(() => {
-        return caches.match('./index.html');
-      });
-    })
+    fetch(event.request)
+      .then((networkResponse) => {
+        if (networkResponse && networkResponse.status === 200 && networkResponse.type === 'basic') {
+          const responseToCache = networkResponse.clone();
+          caches.open(CACHE_NAME).then((cache) => {
+            cache.put(event.request, responseToCache);
+          });
+        }
+        return networkResponse;
+      })
+      .catch(() => {
+        return caches.match(event.request);
+      })
   );
 });

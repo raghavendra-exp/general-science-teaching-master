@@ -12,25 +12,43 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [theme, setTheme] = useState<ThemeMode>(() => {
-    return (localStorage.getItem('gst_theme') as ThemeMode) || 'system';
+    try {
+      return (localStorage.getItem('gst_theme') as ThemeMode) || 'system';
+    } catch {
+      return 'system';
+    }
   });
 
   const [isDark, setIsDark] = useState<boolean>(() => {
     if (typeof window === 'undefined') return false;
-    const saved = localStorage.getItem('gst_theme');
-    if (saved === 'dark') return true;
-    if (saved === 'light') return false;
-    return window.matchMedia('(prefers-color-scheme: dark)').matches;
+    try {
+      const saved = localStorage.getItem('gst_theme');
+      if (saved === 'dark') return true;
+      if (saved === 'light') return false;
+      return typeof window.matchMedia === 'function' ? window.matchMedia('(prefers-color-scheme: dark)').matches : false;
+    } catch {
+      return false;
+    }
   });
 
   useEffect(() => {
     const root = document.documentElement;
-    localStorage.setItem('gst_theme', theme);
+    try {
+      localStorage.setItem('gst_theme', theme);
+    } catch {
+      // storage unavailable or blocked
+    }
 
     const applyTheme = () => {
-      const darkActive = 
-        theme === 'dark' || 
-        (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      let prefersDark = false;
+      try {
+        if (typeof window.matchMedia === 'function') {
+          prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        }
+      } catch {
+        prefersDark = false;
+      }
+      const darkActive = theme === 'dark' || (theme === 'system' && prefersDark);
       
       setIsDark(darkActive);
       if (darkActive) {
@@ -44,11 +62,15 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 
     applyTheme();
 
-    if (theme === 'system') {
-      const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-      const listener = () => applyTheme();
-      mediaQuery.addEventListener('change', listener);
-      return () => mediaQuery.removeEventListener('change', listener);
+    if (theme === 'system' && typeof window.matchMedia === 'function') {
+      try {
+        const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+        const listener = () => applyTheme();
+        mediaQuery.addEventListener('change', listener);
+        return () => mediaQuery.removeEventListener('change', listener);
+      } catch {
+        // matchMedia event listeners not supported
+      }
     }
   }, [theme]);
 

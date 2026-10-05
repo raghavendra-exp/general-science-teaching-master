@@ -12,13 +12,23 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 
 export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [language, setLanguageState] = useState<Language>(() => {
-    const saved = localStorage.getItem('gst_language') as Language;
-    return saved === 'hi' ? 'hi' : 'en';
+    try {
+      const saved = localStorage.getItem('gst_language') as Language;
+      return saved === 'hi' ? 'hi' : 'en';
+    } catch {
+      return 'en';
+    }
   });
 
   useEffect(() => {
-    localStorage.setItem('gst_language', language);
-    document.documentElement.lang = language;
+    try {
+      localStorage.setItem('gst_language', language);
+    } catch {
+      // storage unavailable or blocked
+    }
+    if (document.documentElement) {
+      document.documentElement.lang = language;
+    }
   }, [language]);
 
   const toggleLanguage = () => {
