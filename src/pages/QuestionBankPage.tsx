@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { 
   HelpCircle, 
   Search, 
@@ -47,6 +47,12 @@ export const QuestionBankPage: React.FC<QuestionBankPageProps> = ({
   // Interactive answer reveals per question
   const [revealedAnswers, setRevealedAnswers] = useState<Record<string, boolean>>({});
   const [questionLang, setQuestionLang] = useState<Record<string, 'en' | 'hi'>>({});
+
+  useEffect(() => {
+    if (initialFilter?.exam) setSelectedExam(initialFilter.exam);
+    if (initialFilter?.sourceType) setSelectedSourceType(initialFilter.sourceType);
+    setCurrentPage(1);
+  }, [initialFilter?.exam, initialFilter?.sourceType]);
 
   // Pagination
   const [currentPage, setCurrentPage] = useState<number>(1);

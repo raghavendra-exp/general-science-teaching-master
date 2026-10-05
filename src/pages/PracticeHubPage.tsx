@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   CheckCircle, 
   HelpCircle, 
@@ -33,6 +33,15 @@ export const PracticeHubPage: React.FC<PracticeHubPageProps> = ({ onNavigate, in
   const [selectedOption, setSelectedOption] = useState<number | null>(null);
   const [showExplanation, setShowExplanation] = useState(false);
   const [scoreCount, setScoreCount] = useState({ correct: 0, attempted: 0 });
+
+  useEffect(() => {
+    if (initialExam) {
+      setSelectedExam(initialExam);
+      setCurrentIdx(0);
+      setSelectedOption(null);
+      setShowExplanation(false);
+    }
+  }, [initialExam]);
 
   const activeQuestions = filterQuestions({
     exam: selectedExam !== 'all' ? selectedExam : undefined,

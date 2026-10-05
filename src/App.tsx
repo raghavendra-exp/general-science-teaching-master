@@ -164,6 +164,7 @@ export const MainApp: React.FC = () => {
         {/* Sidebar */}
         <Sidebar
           currentPage={currentPage}
+          currentParams={pageParams}
           onNavigate={handleNavigate}
           isOpen={isSidebarOpen}
           onClose={() => setIsSidebarOpen(false)}
@@ -191,7 +192,7 @@ export const MainApp: React.FC = () => {
 
           {currentPage === 'exam-detail' && (
             <ExamDetailPage
-              examId={pageParams.id || 'ctet'}
+              examId={pageParams.examId || pageParams.id || 'ctet'}
               onNavigate={handleNavigate}
             />
           )}

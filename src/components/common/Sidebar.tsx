@@ -27,6 +27,7 @@ import { useLanguage } from '../../context/LanguageContext';
 
 interface SidebarProps {
   currentPage: string;
+  currentParams?: Record<string, string>;
   onNavigate: (page: string, params?: Record<string, string>) => void;
   isOpen: boolean;
   onClose: () => void;
@@ -49,6 +50,7 @@ interface NavSection {
 
 export const Sidebar: React.FC<SidebarProps> = ({
   currentPage,
+  currentParams,
   onNavigate,
   isOpen,
   onClose
@@ -134,7 +136,17 @@ export const Sidebar: React.FC<SidebarProps> = ({
               const Icon = item.icon;
               const label = language === 'hi' ? item.labelHi : item.label;
               const targetPage = item.page || item.id;
-              const isActive = currentPage === targetPage;
+              
+              let isActive = false;
+              if (item.params?.category) {
+                isActive = currentPage === targetPage && currentParams?.category === item.params.category;
+              } else if (item.id === 'exams-directory') {
+                isActive = currentPage === 'exams-directory' && (!currentParams?.category || currentParams.category === 'all');
+              } else if (item.params?.exam) {
+                isActive = currentPage === targetPage && currentParams?.exam === item.params.exam;
+              } else {
+                isActive = currentPage === targetPage;
+              }
 
               return (
                 <button

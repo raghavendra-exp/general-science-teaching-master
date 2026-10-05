@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   Search, 
   Filter, 
@@ -29,6 +29,10 @@ export const ExamsDirectoryPage: React.FC<ExamsDirectoryPageProps> = ({
   const [selectedCategory, setSelectedCategory] = useState<string>(initialCategory || 'all');
   const [searchQuery, setSearchQuery] = useState('');
   const [levelFilter, setLevelFilter] = useState<'all' | 'National' | 'State'>('all');
+
+  useEffect(() => {
+    setSelectedCategory(initialCategory || 'all');
+  }, [initialCategory]);
 
   const categories = [
     { id: 'all', label: 'All Exams', labelHi: 'सभी परीक्षाएं' },
@@ -131,7 +135,10 @@ export const ExamsDirectoryPage: React.FC<ExamsDirectoryPageProps> = ({
           {categories.map(cat => (
             <button
               key={cat.id}
-              onClick={() => setSelectedCategory(cat.id)}
+              onClick={() => {
+                setSelectedCategory(cat.id);
+                onNavigate('exams-directory', cat.id === 'all' ? undefined : { category: cat.id });
+              }}
               className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all ${
                 selectedCategory === cat.id
                   ? 'bg-emerald-600 text-white shadow-xs'
