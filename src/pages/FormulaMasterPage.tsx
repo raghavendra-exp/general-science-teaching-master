@@ -119,7 +119,7 @@ export const FormulaMasterPage: React.FC<FormulaMasterPageProps> = ({ onNavigate
             >
               {/* Header */}
               <div>
-                <div className="flex items-start justify-between gap-3 mb-2">
+                <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2.5 mb-2">
                   <div className="space-y-0.5">
                     <div className="flex items-center gap-2">
                       <span className="px-2 py-0.5 rounded-md text-[10px] font-bold bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-900/40">
@@ -134,7 +134,7 @@ export const FormulaMasterPage: React.FC<FormulaMasterPageProps> = ({ onNavigate
                     </h2>
                   </div>
 
-                  <div className="flex items-center gap-1 shrink-0">
+                  <div className="flex items-center gap-1 self-start sm:self-auto shrink-0">
                     <button
                       onClick={() => handleCopy(item.id, `${item.name}\n${item.formula}\n${item.whereClause || ''}`)}
                       className="p-1.5 rounded-lg text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"

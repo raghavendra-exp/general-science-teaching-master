@@ -226,8 +226,8 @@ export const QuestionBankPage: React.FC<QuestionBankPageProps> = ({
               className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-5 sm:p-6 shadow-2xs hover:border-slate-300 dark:hover:border-slate-700 transition-all space-y-4"
             >
               {/* Question Meta Header */}
-              <div className="flex flex-wrap items-center justify-between gap-3 text-xs">
-                <div className="flex flex-wrap items-center gap-2">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 text-xs">
+                <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
                   <span className="font-bold text-slate-500 dark:text-slate-400">
                     Q{globalIdx}.
                   </span>
@@ -254,7 +254,7 @@ export const QuestionBankPage: React.FC<QuestionBankPageProps> = ({
                   </span>
                 </div>
 
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 self-start sm:self-auto">
                   {/* Source Type Tag */}
                   <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-black tracking-wide border ${
                     q.sourceType === 'VERIFIED PYQ'
@@ -325,26 +325,26 @@ export const QuestionBankPage: React.FC<QuestionBankPageProps> = ({
               </div>
 
               {/* Explanation & Action Bar */}
-              <div className="pt-2 flex flex-wrap items-center justify-between gap-3 border-t border-slate-100 dark:border-slate-800 text-xs">
-                <div className="flex items-center gap-3">
+              <div className="pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 border-t border-slate-100 dark:border-slate-800 text-xs">
+                <div className="flex flex-wrap items-center gap-2 sm:gap-3">
                   <button
                     onClick={() => toggleAnswer(q.id)}
                     className="font-bold text-indigo-600 dark:text-indigo-400 hover:underline flex items-center gap-1.5"
                   >
-                    <HelpCircle className="w-3.5 h-3.5" />
+                    <HelpCircle className="w-3.5 h-3.5 shrink-0" />
                     <span>{isRevealed ? t('Hide Explanation', 'व्याख्या छिपाएं') : t('Show Official Answer & Explanation', 'आधिकारिक उत्तर व व्याख्या देखें')}</span>
                   </button>
-                  <span className="text-slate-300 dark:text-slate-700">|</span>
-                  <span className="text-slate-400 text-[11px]">
+                  <span className="hidden sm:inline text-slate-300 dark:text-slate-700">|</span>
+                  <span className="text-slate-400 text-[11px] truncate max-w-[200px] sm:max-w-xs">
                     {t('Source:', 'स्रोत:')} {q.source}
                   </span>
                 </div>
 
                 <button
                   onClick={() => addToErrorNotebook(q, (q.answer + 1) % 4, 'Conceptual')}
-                  className="px-2.5 py-1 text-[11px] font-semibold rounded-lg text-slate-500 hover:text-rose-600 dark:hover:text-rose-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex items-center gap-1"
+                  className="self-start sm:self-auto px-2.5 py-1 text-[11px] font-semibold rounded-lg text-slate-500 hover:text-rose-600 dark:hover:text-rose-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex items-center gap-1 shrink-0"
                 >
-                  <AlertCircle className="w-3.5 h-3.5" />
+                  <AlertCircle className="w-3.5 h-3.5 shrink-0" />
                   <span>{t('Log to Error Notebook', 'त्रुटि नोटबुक में जोड़ें')}</span>
                 </button>
               </div>

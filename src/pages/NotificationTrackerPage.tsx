@@ -166,9 +166,9 @@ export const NotificationTrackerPage: React.FC<NotificationTrackerPageProps> = (
                 className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-5 sm:p-6 shadow-2xs hover:shadow-xs transition-all space-y-4"
               >
                 {/* Header */}
-                <div className="flex flex-wrap items-start justify-between gap-3">
+                <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3">
                   <div>
-                    <div className="flex items-center gap-2 mb-1">
+                    <div className="flex flex-wrap items-center gap-2 mb-1">
                       <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold border ${statusConfig.color}`}>
                         {statusConfig.label}
                       </span>
@@ -181,7 +181,7 @@ export const NotificationTrackerPage: React.FC<NotificationTrackerPageProps> = (
                     </h2>
                   </div>
 
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center justify-between sm:justify-end gap-2 w-full sm:w-auto pt-1 sm:pt-0">
                     <button
                       onClick={() => onNavigate('exam-detail', { id: exam.id })}
                       className="px-3 py-1.5 rounded-xl text-xs font-bold text-emerald-800 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800 hover:bg-emerald-100 flex items-center gap-1"
@@ -202,7 +202,7 @@ export const NotificationTrackerPage: React.FC<NotificationTrackerPageProps> = (
                 </div>
 
                 {/* Timeline Lifecycle Grid */}
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 p-3.5 rounded-xl bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800 text-xs">
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-2.5 p-3 sm:p-3.5 rounded-xl bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800 text-xs">
                   <div>
                     <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">{t('Notification Date', 'विज्ञप्ति तिथि')}</div>
                     <div className="font-semibold text-slate-800 dark:text-slate-200 mt-0.5">{notif.notificationDate}</div>
@@ -210,7 +210,7 @@ export const NotificationTrackerPage: React.FC<NotificationTrackerPageProps> = (
 
                   <div>
                     <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">{t('Apply Window', 'आवेदन अवधि')}</div>
-                    <div className="font-semibold text-slate-800 dark:text-slate-200 mt-0.5">{notif.applyStartDate} to {notif.applyEndDate}</div>
+                    <div className="font-semibold text-slate-800 dark:text-slate-200 mt-0.5 break-words">{notif.applyStartDate} to {notif.applyEndDate}</div>
                   </div>
 
                   <div>

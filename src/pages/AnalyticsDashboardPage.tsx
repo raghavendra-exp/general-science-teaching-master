@@ -116,59 +116,59 @@ export const AnalyticsDashboardPage: React.FC<AnalyticsDashboardPageProps> = ({ 
       </div>
 
       {/* KPI Cards Grid */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-4">
         {/* Tests Attempted */}
-        <div className="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-2xs space-y-1">
-          <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider flex items-center justify-between">
+        <div className="bg-white dark:bg-slate-900 p-3.5 sm:p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-2xs space-y-1">
+          <div className="text-[10px] sm:text-[11px] font-bold text-slate-400 uppercase tracking-wider flex items-center justify-between">
             <span>{t('Mocks Attempted', 'मॉक टेस्ट संपन्न')}</span>
             <Clock className="w-3.5 h-3.5 text-blue-500" />
           </div>
-          <div className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-slate-100">
+          <div className="text-xl sm:text-3xl font-black text-slate-900 dark:text-slate-100">
             {totalTests}
           </div>
-          <div className="text-[11px] text-slate-500">
+          <div className="text-[10px] sm:text-[11px] text-slate-500">
             {totalAttemptedQuestions} {t('Questions Solved', 'प्रश्न हल किए')}
           </div>
         </div>
 
         {/* Overall Accuracy */}
-        <div className="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-2xs space-y-1">
-          <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider flex items-center justify-between">
+        <div className="bg-white dark:bg-slate-900 p-3.5 sm:p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-2xs space-y-1">
+          <div className="text-[10px] sm:text-[11px] font-bold text-slate-400 uppercase tracking-wider flex items-center justify-between">
             <span>{t('Overall Accuracy', 'कुल सटीकता')}</span>
             <CheckCircle className="w-3.5 h-3.5 text-emerald-500" />
           </div>
-          <div className="text-2xl sm:text-3xl font-black text-emerald-800 dark:text-emerald-400">
+          <div className="text-xl sm:text-3xl font-black text-emerald-800 dark:text-emerald-400">
             {overallAccuracy}%
           </div>
-          <div className="text-[11px] text-slate-500">
+          <div className="text-[10px] sm:text-[11px] text-slate-500">
             {totalCorrectQuestions} {t('Correct Answers', 'सही उत्तर')}
           </div>
         </div>
 
         {/* Error Notebook Log */}
-        <div className="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-2xs space-y-1">
-          <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider flex items-center justify-between">
+        <div className="bg-white dark:bg-slate-900 p-3.5 sm:p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-2xs space-y-1">
+          <div className="text-[10px] sm:text-[11px] font-bold text-slate-400 uppercase tracking-wider flex items-center justify-between">
             <span>{t('Errors Tracked', 'त्रुटि नोटबुक')}</span>
             <AlertCircle className="w-3.5 h-3.5 text-amber-500" />
           </div>
-          <div className="text-2xl sm:text-3xl font-black text-amber-800 dark:text-amber-400">
+          <div className="text-xl sm:text-3xl font-black text-amber-800 dark:text-amber-400">
             {totalErrors}
           </div>
-          <div className="text-[11px] text-slate-500">
+          <div className="text-[10px] sm:text-[11px] text-slate-500">
             {resolvedErrors} {t('Resolved / Rectified', 'सुधार लिए गए')}
           </div>
         </div>
 
         {/* Flashcards & Bookmarks */}
-        <div className="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-2xs space-y-1">
-          <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider flex items-center justify-between">
+        <div className="bg-white dark:bg-slate-900 p-3.5 sm:p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-2xs space-y-1">
+          <div className="text-[10px] sm:text-[11px] font-bold text-slate-400 uppercase tracking-wider flex items-center justify-between">
             <span>{t('Active Memory', 'सक्रिय स्मृति')}</span>
             <Sparkles className="w-3.5 h-3.5 text-purple-500" />
           </div>
-          <div className="text-2xl sm:text-3xl font-black text-purple-800 dark:text-purple-400">
+          <div className="text-xl sm:text-3xl font-black text-purple-800 dark:text-purple-400">
             {masteredFlashcards}
           </div>
-          <div className="text-[11px] text-slate-500">
+          <div className="text-[10px] sm:text-[11px] text-slate-500">
             {bookmarks.length} {t('Saved Bookmarks', 'सुरक्षित बुकमार्क')}
           </div>
         </div>
@@ -176,7 +176,7 @@ export const AnalyticsDashboardPage: React.FC<AnalyticsDashboardPageProps> = ({ 
 
       {/* Weak Topics Diagnostic Heatmap */}
       <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-5 sm:p-6 shadow-2xs space-y-4">
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
           <div>
             <h2 className="text-base font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2">
               <AlertCircle className="w-4 h-4 text-rose-500" />
@@ -227,7 +227,7 @@ export const AnalyticsDashboardPage: React.FC<AnalyticsDashboardPageProps> = ({ 
 
       {/* Test History Log */}
       <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-5 sm:p-6 shadow-2xs space-y-4">
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
           <h2 className="text-base font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2">
             <Clock className="w-4 h-4 text-blue-600" />
             <span>{t('Recent CBT Test Submissions', 'हाल ही में दिए गए टेस्ट का इतिहास')}</span>
@@ -236,7 +236,7 @@ export const AnalyticsDashboardPage: React.FC<AnalyticsDashboardPageProps> = ({ 
           {testHistory.length > 0 && (
             <button
               onClick={clearTestHistory}
-              className="text-xs text-slate-400 hover:text-rose-500 font-semibold"
+              className="text-xs text-slate-400 hover:text-rose-500 font-semibold self-start sm:self-auto"
             >
               {t('Clear Test Log', 'इतिहास मिटाएं')}
             </button>
@@ -245,7 +245,7 @@ export const AnalyticsDashboardPage: React.FC<AnalyticsDashboardPageProps> = ({ 
 
         {testHistory.length > 0 ? (
           <div className="overflow-x-auto">
-            <table className="w-full text-left text-xs">
+            <table className="w-full min-w-[500px] text-left text-xs">
               <thead>
                 <tr className="border-b border-slate-200 dark:border-slate-800 text-slate-400 font-bold uppercase tracking-wider text-[10px]">
                   <th className="pb-2">{t('Test Title', 'टेस्ट शीर्षक')}</th>
@@ -327,18 +327,18 @@ export const AnalyticsDashboardPage: React.FC<AnalyticsDashboardPageProps> = ({ 
           <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider">
             {t('Restore from JSON text', 'JSON टेक्स्ट से रिस्टोर करें')}
           </label>
-          <div className="flex gap-2">
+          <div className="flex flex-col sm:flex-row gap-2">
             <textarea
               rows={2}
               value={importJsonText}
               onChange={(e) => setImportJsonText(e.target.value)}
               placeholder={t('Paste JSON backup string here...', 'यहाँ JSON बैकअप पेस्ट करें...')}
-              className="flex-1 p-2 text-xs font-mono rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-200"
+              className="w-full flex-1 p-2 text-xs font-mono rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-200"
             />
             <button
               onClick={handleImportSubmit}
               disabled={!importJsonText.trim()}
-              className="px-4 py-2 rounded-xl text-xs font-bold bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 self-end flex items-center gap-1"
+              className="w-full sm:w-auto px-4 py-2 rounded-xl text-xs font-bold bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 self-stretch sm:self-end flex items-center justify-center gap-1"
             >
               <Upload className="w-3.5 h-3.5" />
               <span>{t('Import', 'आयात')}</span>

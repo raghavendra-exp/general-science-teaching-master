@@ -141,11 +141,11 @@ export const ScienceConceptsPage: React.FC<ScienceConceptsPageProps> = ({ onNavi
             )}
 
             {/* Bottom Actions */}
-            <div className="pt-2 flex items-center justify-between">
+            <div className="pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
               <span className="text-xs text-slate-500">Verified per official CSIR & IIT JAM curricula</span>
               <button
                 onClick={() => onNavigate('practice-hub', { exam: 'science-exams-master' })}
-                className="px-4 py-2 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs flex items-center gap-1.5 transition-colors shadow-xs"
+                className="w-full sm:w-auto px-4 py-2 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs flex items-center justify-center gap-1.5 transition-colors shadow-xs"
               >
                 <span>Practice Science Questions</span>
                 <ArrowRight className="w-3.5 h-3.5" />

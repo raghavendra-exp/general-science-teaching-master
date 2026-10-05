@@ -98,7 +98,7 @@ export const ExamDetailPage: React.FC<ExamDetailPageProps> = ({ examId, onNaviga
               {language === 'hi' ? exam.descriptionHi : exam.description}
             </p>
 
-            <div className="flex items-center gap-3 pt-1 text-xs text-slate-500 dark:text-slate-400">
+            <div className="flex flex-wrap items-center gap-2 sm:gap-3 pt-1 text-xs text-slate-500 dark:text-slate-400">
               <span><strong>{t('Conducting Authority:', 'आयोजक संस्था:')}</strong> {exam.conductingBody}</span>
               <span>•</span>
               <a 
@@ -113,10 +113,10 @@ export const ExamDetailPage: React.FC<ExamDetailPageProps> = ({ examId, onNaviga
           </div>
 
           {/* Quick CTA Actions */}
-          <div className="flex flex-col sm:flex-row md:flex-col gap-2.5 shrink-0">
+          <div className="flex flex-col sm:flex-row md:flex-col gap-2.5 w-full md:w-auto shrink-0">
             <button
               onClick={() => onNavigate('mock-tests', { examId: exam.id })}
-              className="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm shadow-md shadow-emerald-600/20 flex items-center justify-center gap-2 transition-all"
+              className="w-full px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm shadow-md shadow-emerald-600/20 flex items-center justify-center gap-2 transition-all"
             >
               <CheckCircle className="w-4 h-4" />
               <span>{t('Launch CBT Mock Test', 'CBT मॉक टेस्ट दें')}</span>
@@ -124,7 +124,7 @@ export const ExamDetailPage: React.FC<ExamDetailPageProps> = ({ examId, onNaviga
 
             <button
               onClick={() => onNavigate('practice-hub', { exam: exam.id })}
-              className="px-5 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-semibold text-xs sm:text-sm border border-slate-200 dark:border-slate-700 flex items-center justify-center gap-2 transition-all"
+              className="w-full px-5 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-semibold text-xs sm:text-sm border border-slate-200 dark:border-slate-700 flex items-center justify-center gap-2 transition-all"
             >
               <HelpCircle className="w-4 h-4 text-emerald-500" />
               <span>{t('Practice Questions', 'प्रश्न अभ्यास करें')}</span>
@@ -132,7 +132,7 @@ export const ExamDetailPage: React.FC<ExamDetailPageProps> = ({ examId, onNaviga
 
             <button
               onClick={() => toggleBookmark(exam.id)}
-              className={`px-4 py-2 rounded-xl text-xs font-medium border flex items-center justify-center gap-2 transition-all ${
+              className={`w-full px-4 py-2 rounded-xl text-xs font-medium border flex items-center justify-center gap-2 transition-all ${
                 bookmarked
                   ? 'bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 border-amber-300 dark:border-amber-700'
                   : 'bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-400 border-slate-200 dark:border-slate-800 hover:bg-slate-50'
@@ -502,7 +502,7 @@ export const ExamDetailPage: React.FC<ExamDetailPageProps> = ({ examId, onNaviga
           <div className="space-y-3">
             {notifications.length > 0 ? (
               notifications.map(notif => (
-                <div key={notif.id} className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-800 flex items-start justify-between gap-4">
+                <div key={notif.id} className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row sm:items-start justify-between gap-3 sm:gap-4">
                   <div className="space-y-1">
                     <div className="flex items-center gap-2">
                       <span className="text-xs font-bold text-rose-600">{notif.category}</span>
@@ -519,7 +519,7 @@ export const ExamDetailPage: React.FC<ExamDetailPageProps> = ({ examId, onNaviga
                     href={notif.officialUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-3 py-1.5 rounded-lg bg-slate-200 dark:bg-slate-700 hover:bg-emerald-600 hover:text-white text-xs font-semibold inline-flex items-center gap-1 transition-colors shrink-0"
+                    className="self-start sm:self-auto px-3 py-1.5 rounded-lg bg-slate-200 dark:bg-slate-700 hover:bg-emerald-600 hover:text-white text-xs font-semibold inline-flex items-center gap-1 transition-colors shrink-0"
                   >
                     <span>Official Notice</span>
                     <ExternalLink className="w-3 h-3" />

@@ -170,7 +170,7 @@ export const MainApp: React.FC = () => {
         />
 
         {/* Main Content Area */}
-        <main className="flex-1 lg:pl-72 w-full px-4 sm:px-6 lg:px-8 py-6 pb-24 lg:pb-12 max-w-full overflow-hidden">
+        <main className="flex-1 min-w-0 w-full px-3.5 sm:px-6 lg:px-8 py-6 pb-24 lg:pb-12">
           {currentPage === 'home' && (
             <HomePage
               onNavigate={handleNavigate}
@@ -200,6 +200,7 @@ export const MainApp: React.FC = () => {
             <MockTestsPage
               onNavigate={handleNavigate}
               onStartMock={handleStartMock}
+              initialExamId={pageParams.examId}
             />
           )}
 

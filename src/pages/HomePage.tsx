@@ -126,28 +126,28 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenSearch }) 
           </p>
 
           {/* Quick Action CTAs */}
-          <div className="flex flex-wrap items-center gap-3 pt-2">
+          <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 pt-2">
             <button
               onClick={() => onNavigate('eligibility-checker')}
-              className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-bold text-xs sm:text-sm shadow-lg shadow-emerald-500/25 flex items-center gap-2 transition-all hover:scale-102"
+              className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-bold text-xs sm:text-sm shadow-lg shadow-emerald-500/25 flex items-center justify-center gap-2 transition-all hover:scale-102"
             >
-              <Compass className="w-4 h-4" />
+              <Compass className="w-4 h-4 shrink-0" />
               <span>{t('Which Exam Can I Apply For?', 'मेरी पात्रता जांचें (Eligibility)')}</span>
             </button>
 
             <button
               onClick={() => onNavigate('mock-tests')}
-              className="px-5 py-2.5 rounded-xl bg-white/10 hover:bg-white/15 text-white font-semibold text-xs sm:text-sm border border-white/20 backdrop-blur-xs flex items-center gap-2 transition-all"
+              className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-white/10 hover:bg-white/15 text-white font-semibold text-xs sm:text-sm border border-white/20 backdrop-blur-xs flex items-center justify-center gap-2 transition-all"
             >
-              <CheckCircle className="w-4 h-4 text-emerald-400" />
+              <CheckCircle className="w-4 h-4 text-emerald-400 shrink-0" />
               <span>{t('Launch CBT Mock Test', 'CBT मॉक टेस्ट प्रारंभ करें')}</span>
             </button>
 
             <button
               onClick={onOpenSearch}
-              className="px-4 py-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-700/80 text-slate-300 font-medium text-xs sm:text-sm border border-slate-700 flex items-center gap-2 transition-colors"
+              className="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-700/80 text-slate-300 font-medium text-xs sm:text-sm border border-slate-700 flex items-center justify-center gap-2 transition-colors"
             >
-              <Search className="w-4 h-4 text-slate-400" />
+              <Search className="w-4 h-4 text-slate-400 shrink-0" />
               <span>{t('Search Platform (Ctrl+K)', 'खोजें (Ctrl+K)')}</span>
             </button>
           </div>
@@ -244,16 +244,16 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenSearch }) 
         </div>
 
         {/* Level steps */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-2.5">
+        <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2 sm:gap-2.5">
           {zeroToMasterLevels.map(item => (
             <div
               key={item.lvl}
-              className="bg-white dark:bg-slate-900/80 rounded-xl p-3 border border-slate-200/80 dark:border-slate-800 flex items-center gap-2.5 shadow-2xs hover:border-emerald-500 transition-colors"
+              className="bg-white dark:bg-slate-900/80 rounded-xl p-2.5 sm:p-3 border border-slate-200/80 dark:border-slate-800 flex items-center gap-2 sm:gap-2.5 shadow-2xs hover:border-emerald-500 transition-colors min-w-0"
             >
               <div className="w-7 h-7 rounded-lg bg-emerald-600 text-white font-black text-xs flex items-center justify-center shrink-0">
                 {item.lvl}
               </div>
-              <div className="truncate">
+              <div className="min-w-0 flex-1 truncate">
                 <div className="text-[10px] uppercase font-bold text-slate-400">Level {item.lvl}</div>
                 <div className="text-xs font-bold text-slate-800 dark:text-slate-200 truncate">
                   {language === 'hi' ? item.titleHi : item.title}
@@ -393,10 +393,10 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenSearch }) 
       </section>
 
       {/* Education News Lab Section */}
-      <section className="bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-8 border border-slate-200 dark:border-slate-800 space-y-4">
-        <div className="flex items-center justify-between">
+      <section className="bg-white dark:bg-slate-900 rounded-3xl p-5 sm:p-8 border border-slate-200 dark:border-slate-800 space-y-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-lg bg-teal-500/20 text-teal-600 dark:text-teal-400 flex items-center justify-center font-bold">
+            <div className="w-8 h-8 rounded-lg bg-teal-500/20 text-teal-600 dark:text-teal-400 flex items-center justify-center font-bold shrink-0">
               NEP
             </div>
             <div>
@@ -410,7 +410,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenSearch }) 
           </div>
           <button
             onClick={() => onNavigate('education-news')}
-            className="text-xs font-bold text-emerald-600 dark:text-emerald-400 hover:underline"
+            className="self-start sm:self-auto text-xs font-bold text-emerald-600 dark:text-emerald-400 hover:underline"
           >
             {t('View All News', 'सभी समाचार')} →
           </button>
@@ -434,7 +434,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenSearch }) 
                   {language === 'hi' ? news.summaryHi : news.summary}
                 </p>
               </div>
-              <div className="mt-3 pt-2.5 border-t border-slate-200 dark:border-slate-700/60 flex items-center justify-between text-[11px]">
+              <div className="mt-3 pt-2.5 border-t border-slate-200 dark:border-slate-700/60 flex flex-wrap items-center justify-between gap-1.5 text-[11px]">
                 <span className="text-slate-500">Relevance: {news.examRelevance.slice(0, 2).join(', ')}</span>
                 <span className="text-emerald-600 font-semibold">Verified</span>
               </div>

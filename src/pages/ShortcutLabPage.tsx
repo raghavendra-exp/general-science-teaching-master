@@ -119,7 +119,7 @@ export const ShortcutLabPage: React.FC<ShortcutLabPageProps> = ({ onNavigate }) 
               className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-5 sm:p-6 shadow-2xs hover:shadow-xs transition-all space-y-4"
             >
               {/* Header Info */}
-              <div className="flex items-start justify-between gap-4">
+              <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3 sm:gap-4">
                 <div className="space-y-1">
                   <div className="flex flex-wrap items-center gap-2">
                     <span className="px-2.5 py-0.5 rounded-md text-[11px] font-bold bg-emerald-50 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/60">
@@ -134,7 +134,7 @@ export const ShortcutLabPage: React.FC<ShortcutLabPageProps> = ({ onNavigate }) 
                   </h2>
                 </div>
 
-                <div className="flex items-center gap-1.5 shrink-0">
+                <div className="flex items-center gap-1.5 self-start sm:self-auto shrink-0">
                   <button
                     onClick={() => handleCopy(item.id, `${item.title}\n\nShortcut: ${item.shortcutMethod}\n\nExample: ${item.exampleQuestion}\nSolution: ${item.exampleSolution}`)}
                     className="p-2 rounded-xl text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"

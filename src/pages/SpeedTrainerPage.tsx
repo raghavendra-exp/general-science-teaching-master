@@ -140,14 +140,14 @@ export const SpeedTrainerPage: React.FC<{ onNavigate: (page: string) => void }> 
       </div>
 
       {/* Main Trainer Card */}
-      <div className="bg-white dark:bg-slate-900 rounded-3xl p-8 sm:p-12 border border-slate-200 dark:border-slate-800 shadow-2xs max-w-2xl mx-auto text-center space-y-6">
+      <div className="bg-white dark:bg-slate-900 rounded-3xl p-5 sm:p-8 md:p-12 border border-slate-200 dark:border-slate-800 shadow-2xs max-w-2xl mx-auto text-center space-y-6">
         {!isActive && !gameOver && (
           <div className="space-y-5">
             <div className="w-16 h-16 rounded-2xl bg-amber-100 dark:bg-amber-950/60 text-amber-600 flex items-center justify-center mx-auto shadow-inner">
               <Zap className="w-8 h-8" />
             </div>
             <div>
-              <h3 className="text-xl font-black text-slate-900 dark:text-slate-100">
+              <h3 className="text-lg sm:text-xl font-black text-slate-900 dark:text-slate-100">
                 Ready for the 60-Second Challenge?
               </h3>
               <p className="text-xs text-slate-500 mt-1 max-w-sm mx-auto">
@@ -156,9 +156,9 @@ export const SpeedTrainerPage: React.FC<{ onNavigate: (page: string) => void }> 
             </div>
             <button
               onClick={handleStart}
-              className="px-8 py-3 rounded-2xl bg-amber-500 hover:bg-amber-600 text-white font-bold text-sm shadow-lg shadow-amber-500/25 transition-transform hover:scale-105 inline-flex items-center gap-2"
+              className="w-full sm:w-auto px-8 py-3 rounded-2xl bg-amber-500 hover:bg-amber-600 text-white font-bold text-sm shadow-lg shadow-amber-500/25 transition-transform hover:scale-105 inline-flex items-center justify-center gap-2"
             >
-              <Zap className="w-4 h-4 fill-current" />
+              <Zap className="w-4 h-4 fill-current shrink-0" />
               <span>Start 60s Speed Drill</span>
             </button>
           </div>
@@ -169,7 +169,7 @@ export const SpeedTrainerPage: React.FC<{ onNavigate: (page: string) => void }> 
             {/* Live Timer & Score */}
             <div className="flex items-center justify-between px-4 py-2 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
               <div className="flex items-center gap-1.5 font-mono text-base font-bold text-amber-600">
-                <Clock className="w-4 h-4" />
+                <Clock className="w-4 h-4 shrink-0" />
                 <span>{timeLeft}s</span>
               </div>
               <div className="text-xs font-bold text-slate-700 dark:text-slate-300">
@@ -178,8 +178,8 @@ export const SpeedTrainerPage: React.FC<{ onNavigate: (page: string) => void }> 
             </div>
 
             {/* Problem Prompt */}
-            <div className="py-6">
-              <div className="font-mono text-4xl sm:text-5xl font-black text-slate-900 dark:text-slate-100 tracking-wider">
+            <div className="py-4 sm:py-6">
+              <div className="font-mono text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 dark:text-slate-100 tracking-wider">
                 {currentProblem.prompt}
               </div>
             </div>
@@ -210,41 +210,41 @@ export const SpeedTrainerPage: React.FC<{ onNavigate: (page: string) => void }> 
               <Award className="w-8 h-8" />
             </div>
             <div>
-              <h3 className="text-2xl font-black text-slate-900 dark:text-slate-100">Drill Completed!</h3>
+              <h3 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-slate-100">Drill Completed!</h3>
               <p className="text-xs text-slate-500 mt-1">Here is your speed performance summary</p>
             </div>
 
-            <div className="grid grid-cols-3 gap-3 p-4 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
-              <div>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3 p-3.5 sm:p-4 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+              <div className="p-2">
                 <div className="text-[11px] text-slate-400 font-medium">Correct Score</div>
-                <div className="text-2xl font-black text-emerald-600">{score}</div>
+                <div className="text-xl sm:text-2xl font-black text-emerald-600">{score}</div>
               </div>
-              <div>
+              <div className="p-2 border-t sm:border-t-0 sm:border-l border-slate-200 dark:border-slate-700">
                 <div className="text-[11px] text-slate-400 font-medium">Speed (Q/min)</div>
-                <div className="text-2xl font-black text-amber-600">{attempts}</div>
+                <div className="text-xl sm:text-2xl font-black text-amber-600">{attempts}</div>
               </div>
-              <div>
+              <div className="p-2 border-t sm:border-t-0 sm:border-l border-slate-200 dark:border-slate-700">
                 <div className="text-[11px] text-slate-400 font-medium">Accuracy</div>
-                <div className="text-2xl font-black text-blue-600">
+                <div className="text-xl sm:text-2xl font-black text-blue-600">
                   {attempts > 0 ? Math.round((score / attempts) * 100) : 0}%
                 </div>
               </div>
             </div>
 
-            <div className="flex items-center justify-center gap-3 pt-2">
+            <div className="flex flex-wrap items-center justify-center gap-2.5 pt-2">
               <button
                 onClick={handleStart}
-                className="px-6 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-white font-bold text-xs flex items-center gap-1.5 shadow-md"
+                className="w-full sm:w-auto px-6 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-md"
               >
-                <RotateCcw className="w-4 h-4" />
+                <RotateCcw className="w-4 h-4 shrink-0" />
                 <span>Play Again</span>
               </button>
               <button
                 onClick={() => onNavigate('shortcut-lab')}
-                className="px-5 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 text-slate-700 dark:text-slate-300 font-semibold text-xs flex items-center gap-1.5"
+                className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 text-slate-700 dark:text-slate-300 font-semibold text-xs flex items-center justify-center gap-1.5"
               >
                 <span>View Shortcuts</span>
-                <ArrowRight className="w-3.5 h-3.5" />
+                <ArrowRight className="w-3.5 h-3.5 shrink-0" />
               </button>
             </div>
           </div>

@@ -171,11 +171,11 @@ export const PracticeHubPage: React.FC<PracticeHubPageProps> = ({ onNavigate, in
 
       {/* Question Card */}
       {currentQ ? (
-        <div className="bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-8 border border-slate-200 dark:border-slate-800 shadow-2xs space-y-6">
+        <div className="bg-white dark:bg-slate-900 rounded-3xl p-5 sm:p-8 border border-slate-200 dark:border-slate-800 shadow-2xs space-y-6">
           {/* Card Top */}
-          <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800 text-xs">
-            <div className="flex items-center gap-2">
-              <span className="w-7 h-7 rounded-lg bg-emerald-600 text-white font-bold flex items-center justify-center">
+          <div className="flex flex-wrap items-center justify-between gap-2.5 pb-3 border-b border-slate-100 dark:border-slate-800 text-xs">
+            <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+              <span className="w-7 h-7 rounded-lg bg-emerald-600 text-white font-bold flex items-center justify-center shrink-0">
                 {currentIdx + 1}
               </span>
               <span className="font-semibold text-slate-700 dark:text-slate-300">
@@ -187,8 +187,8 @@ export const PracticeHubPage: React.FC<PracticeHubPageProps> = ({ onNavigate, in
               <span className="text-slate-500">{currentQ.topic}</span>
             </div>
 
-            <div className="flex items-center gap-2">
-              <span className="font-bold text-[10px] px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300">
+            <div className="flex items-center gap-2 self-start sm:self-auto">
+              <span className="font-bold text-[10px] px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 shrink-0">
                 {currentQ.sourceType}
               </span>
               <button

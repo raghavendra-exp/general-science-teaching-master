@@ -17,11 +17,18 @@ import { Breadcrumbs } from '../components/common/Breadcrumbs';
 interface MockTestsPageProps {
   onNavigate: (page: string, params?: Record<string, string>) => void;
   onStartMock: (examId: string, customConfig?: { questionCount: number; duration: number }) => void;
+  initialExamId?: string;
 }
 
-export const MockTestsPage: React.FC<MockTestsPageProps> = ({ onNavigate, onStartMock }) => {
+export const MockTestsPage: React.FC<MockTestsPageProps> = ({ onNavigate, onStartMock, initialExamId }) => {
   const { language, t } = useLanguage();
-  const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const initialCategory = React.useMemo(() => {
+    if (!initialExamId) return 'all';
+    const found = allExams.find(e => e.id === initialExamId);
+    return found ? found.category : 'all';
+  }, [initialExamId]);
+
+  const [selectedCategory, setSelectedCategory] = useState<string>(initialCategory);
 
   const categories = [
     { id: 'all', label: 'All Mocks', labelHi: 'सभी टेस्ट' },

@@ -97,17 +97,17 @@ export const TestResultAnalytics: React.FC<TestResultAnalyticsProps> = ({
             </p>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex flex-wrap items-center gap-2 w-full sm:w-auto">
             <button
               onClick={onRetake}
-              className="px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 text-slate-700 dark:text-slate-300 font-semibold text-xs flex items-center gap-1.5 transition-colors"
+              className="flex-1 sm:flex-none px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 text-slate-700 dark:text-slate-300 font-semibold text-xs flex items-center justify-center gap-1.5 transition-colors"
             >
               <RotateCcw className="w-3.5 h-3.5" />
               <span>{t('Retake Test', 'पुनः परीक्षा दें')}</span>
             </button>
             <button
               onClick={onExit}
-              className="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs flex items-center gap-1.5 transition-colors shadow-xs"
+              className="flex-1 sm:flex-none px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs flex items-center justify-center gap-1.5 transition-colors shadow-xs"
             >
               <ArrowLeft className="w-3.5 h-3.5" />
               <span>{t('Exit to Dashboard', 'डैशबोर्ड')}</span>
@@ -116,17 +116,17 @@ export const TestResultAnalytics: React.FC<TestResultAnalyticsProps> = ({
         </div>
 
         {/* Score & Key Metrics Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-3">
-          <div className="p-4 rounded-2xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-900/60 text-center">
-            <div className="text-xs text-emerald-700 dark:text-emerald-400 font-medium">Final Score</div>
-            <div className="text-2xl font-black text-emerald-700 dark:text-emerald-300 mt-1">
-              {analytics.rawScore} <span className="text-xs font-normal">/ {analytics.maxScore}</span>
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5 sm:gap-3">
+          <div className="p-3 sm:p-4 rounded-2xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-900/60 text-center">
+            <div className="text-[11px] sm:text-xs text-emerald-700 dark:text-emerald-400 font-medium">Final Score</div>
+            <div className="text-xl sm:text-2xl font-black text-emerald-700 dark:text-emerald-300 mt-1">
+              {analytics.rawScore} <span className="text-[10px] sm:text-xs font-normal">/ {analytics.maxScore}</span>
             </div>
           </div>
 
-          <div className="p-4 rounded-2xl bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-900/60 text-center">
-            <div className="text-xs text-blue-700 dark:text-blue-400 font-medium">Accuracy</div>
-            <div className="text-2xl font-black text-blue-700 dark:text-blue-300 mt-1">
+          <div className="p-3 sm:p-4 rounded-2xl bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-900/60 text-center">
+            <div className="text-[11px] sm:text-xs text-blue-700 dark:text-blue-400 font-medium">Accuracy</div>
+            <div className="text-xl sm:text-2xl font-black text-blue-700 dark:text-blue-300 mt-1">
               {analytics.accuracy}%
             </div>
           </div>
@@ -287,9 +287,9 @@ export const TestResultAnalytics: React.FC<TestResultAnalyticsProps> = ({
                 }`}
               >
                 {/* Q Header */}
-                <div className="flex items-center justify-between text-xs mb-3">
-                  <div className="flex items-center gap-2">
-                    <span className="w-6 h-6 rounded-md bg-slate-800 text-white text-[11px] font-bold flex items-center justify-center">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 text-xs mb-3">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className="w-6 h-6 rounded-md bg-slate-800 text-white text-[11px] font-bold flex items-center justify-center shrink-0">
                       {originalIndex + 1}
                     </span>
                     <span className="font-semibold text-slate-700 dark:text-slate-300">{q.subject}</span>
@@ -297,7 +297,7 @@ export const TestResultAnalytics: React.FC<TestResultAnalyticsProps> = ({
                     <span className="text-slate-500">{q.topic}</span>
                   </div>
 
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2 self-end sm:self-auto shrink-0">
                     <span className="text-slate-400 flex items-center gap-1 font-mono">
                       <Clock className="w-3.5 h-3.5" />
                       {timeTaken}s
@@ -377,8 +377,8 @@ export const TestResultAnalytics: React.FC<TestResultAnalyticsProps> = ({
 
       {/* Modal: Add to Error Notebook */}
       {selectedErrorQ && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-xs">
-          <div className="w-full max-w-md bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-200 dark:border-slate-800 shadow-2xl space-y-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-950/70 backdrop-blur-xs">
+          <div className="w-full max-w-md bg-white dark:bg-slate-900 rounded-3xl p-5 sm:p-6 border border-slate-200 dark:border-slate-800 shadow-2xl space-y-4 max-h-[90vh] overflow-y-auto">
             <h3 className="font-bold text-base text-slate-900 dark:text-slate-100">
               {t('Log Question to Error Notebook', 'त्रुटि नोटबुक में दर्ज करें')}
             </h3>

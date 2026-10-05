@@ -143,11 +143,11 @@ export const TeachingPedagogyPage: React.FC<TeachingPedagogyPageProps> = ({ onNa
             </div>
 
             {/* Bottom Actions */}
-            <div className="pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+            <div className="pt-3 border-t border-slate-100 dark:border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
               <span className="text-xs text-slate-400">Target Exams: CTET, KVS, DSSSB, State TETs</span>
               <button
                 onClick={() => onNavigate('practice-hub', { exam: 'teaching-pedagogy-master' })}
-                className="px-4 py-2 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs flex items-center gap-1.5 transition-colors shadow-xs"
+                className="w-full sm:w-auto px-4 py-2 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs flex items-center justify-center gap-1.5 transition-colors shadow-xs"
               >
                 <span>Practice Pedagogy Questions</span>
                 <ArrowRight className="w-3.5 h-3.5" />

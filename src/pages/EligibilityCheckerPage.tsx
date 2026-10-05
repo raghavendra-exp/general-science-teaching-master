@@ -119,7 +119,7 @@ export const EligibilityCheckerPage: React.FC<EligibilityCheckerPageProps> = ({ 
             </div>
 
             {/* Gender & Category Row */}
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div>
                 <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
                   {t('Gender:', 'लिंग:')}
@@ -172,7 +172,7 @@ export const EligibilityCheckerPage: React.FC<EligibilityCheckerPageProps> = ({ 
             </div>
 
             {/* Stream & Percentage */}
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div>
                 <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
                   {t('Stream / Discipline:', 'संकाय / विषय:')}
@@ -282,18 +282,18 @@ export const EligibilityCheckerPage: React.FC<EligibilityCheckerPageProps> = ({ 
           {results && (
             <div className="space-y-4">
               {/* Summary Stats */}
-              <div className="grid grid-cols-3 gap-3">
-                <div className="p-3 bg-emerald-50 dark:bg-emerald-950/40 rounded-2xl border border-emerald-200 dark:border-emerald-900/60 text-center">
-                  <div className="text-xl font-black text-emerald-600 dark:text-emerald-400">{eligibleCount}</div>
-                  <div className="text-[11px] font-semibold text-emerald-800 dark:text-emerald-300">Directly Eligible</div>
+              <div className="grid grid-cols-3 gap-2 sm:gap-3">
+                <div className="p-2 sm:p-3 bg-emerald-50 dark:bg-emerald-950/40 rounded-2xl border border-emerald-200 dark:border-emerald-900/60 text-center">
+                  <div className="text-lg sm:text-xl font-black text-emerald-600 dark:text-emerald-400">{eligibleCount}</div>
+                  <div className="text-[10px] sm:text-[11px] font-semibold text-emerald-800 dark:text-emerald-300">Directly Eligible</div>
                 </div>
-                <div className="p-3 bg-amber-50 dark:bg-amber-950/40 rounded-2xl border border-amber-200 dark:border-amber-900/60 text-center">
-                  <div className="text-xl font-black text-amber-600 dark:text-amber-400">{conditionalCount}</div>
-                  <div className="text-[11px] font-semibold text-amber-800 dark:text-amber-300">Conditional</div>
+                <div className="p-2 sm:p-3 bg-amber-50 dark:bg-amber-950/40 rounded-2xl border border-amber-200 dark:border-amber-900/60 text-center">
+                  <div className="text-lg sm:text-xl font-black text-amber-600 dark:text-amber-400">{conditionalCount}</div>
+                  <div className="text-[10px] sm:text-[11px] font-semibold text-amber-800 dark:text-amber-300">Conditional</div>
                 </div>
-                <div className="p-3 bg-slate-50 dark:bg-slate-800/40 rounded-2xl border border-slate-200 dark:border-slate-800 text-center">
-                  <div className="text-xl font-black text-slate-500">{ineligibleCount}</div>
-                  <div className="text-[11px] font-semibold text-slate-500">Ineligible</div>
+                <div className="p-2 sm:p-3 bg-slate-50 dark:bg-slate-800/40 rounded-2xl border border-slate-200 dark:border-slate-800 text-center">
+                  <div className="text-lg sm:text-xl font-black text-slate-500">{ineligibleCount}</div>
+                  <div className="text-[10px] sm:text-[11px] font-semibold text-slate-500">Ineligible</div>
                 </div>
               </div>
 
@@ -314,9 +314,9 @@ export const EligibilityCheckerPage: React.FC<EligibilityCheckerPageProps> = ({ 
                           : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 opacity-75'
                       }`}
                     >
-                      <div className="flex items-start justify-between gap-3 mb-2">
+                      <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2.5 mb-2">
                         <div>
-                          <div className="flex items-center gap-2">
+                          <div className="flex flex-wrap items-center gap-2">
                             <h4 className="font-extrabold text-sm sm:text-base text-slate-900 dark:text-slate-100">
                               {language === 'hi' ? res.exam.nameHi : res.exam.name}
                             </h4>
@@ -337,7 +337,7 @@ export const EligibilityCheckerPage: React.FC<EligibilityCheckerPageProps> = ({ 
 
                         <button
                           onClick={() => onNavigate('exam-detail', { examId: res.exam.id })}
-                          className="px-2.5 py-1 text-xs font-semibold rounded-lg bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:border-emerald-500 flex items-center gap-1 shrink-0"
+                          className="self-start sm:self-auto px-2.5 py-1 text-xs font-semibold rounded-lg bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:border-emerald-500 flex items-center gap-1 shrink-0"
                         >
                           <span>{t('View Exam', 'विवरण')}</span>
                           <ArrowRight className="w-3 h-3" />
